@@ -1,10 +1,18 @@
 import tweepy
 import time
+import os
+import sys
+from dotenv import load_dotenv
 
-CONSUMER_KEY = 'rUiHdjCb3KSeKIlQIrSH4tyg2'
-CONSUMER_SECRET = 'lgzQHb9Zb7YbCEm3k96lNFGGBzLpNl5o4w1koWhmJwkDGzJ7Gd'
-ACCESS_TOKEN = '1273963908059938816-DwcICxxLoQ7TNJnJf4Mx56TpxHhaMU'
-ACCESS_TOKEN_SECRET = 'TjyMhXUxRGT6FqG9TG3v6ba1O8fcCy9YNeV1WBet3FIkb'
+load_dotenv()
+
+# MY_ENV_VAR = os.getenv('MY_ENV_VAR')
+
+CONSUMER_KEY = os.getenv('CONSUMER_KEY')
+CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+ACCESS_TOKEN_SECRET = os.getenv('ACCESS_TOKEN_SECRET')
+
 
 # * Authenticate to Twitter
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
@@ -14,6 +22,7 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 user = api.me()
+# Write your hashtag that you want to search for in "search" variable.
 search = 'GalwanKeBalwaan'
 nrtweets = 500
 
